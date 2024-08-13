@@ -14,7 +14,6 @@ st.set_page_config(
     page_icon="lyzr-logo-cut.png",
 )
 
-
 st.title("Lyzr Linkedin Post Generator")
 st.markdown("### Welcome to the Lyzr Linkedin Post Generator!")
 
@@ -32,36 +31,30 @@ def create_agent():
             "type": "TOOL_CALLING",
             "config": {"max_tries": 3},
             "priority": 0
-        },{
-            "type": "TOOL_CALLING",
-            "config": {"max_tries": 3},
-            "priority": 0
         }
         ],
-        tools=["perplexity_search","post_image_and_text_linkedin"]
+        tools=["post_image_and_text_linkedin"]
 
     )
     print(env_id)
 
     prompt = """
-You are an Expert LinkedIn Post Creator. Your mission is to generate a compelling and effective LinkedIn post based on the user's input. Follow these guidelines to ensure the post achieves its objectives:
-1.**User Input and Initial Data Gathering**
--The user will enter essential inputs, including the primary goal of the post (e.g., driving leads, announcing an event, sharing industry insights) and the target audience/profile (e.g., industry professionals, potential clients, job seekers). Based on your expertise in LinkedIn content creation, you need to identify and analyze these elements to craft a tailored and effective post.
-2.**Research and Content Synthesis**
--Use Perplexity Search to identify relevant and trending keywords related to the post’s topic. This helps optimize the content for visibility and engagement on LinkedIn.
--Incorporate identified keywords naturally into the text to align with current trends and search queries, enhancing the post’s searchability and relevance.
-3.**Crafting the Message**
-- Ensure the message is straightforward and impactful. Deliver value through actionable insights, innovative solutions, or critical information relevant to the audience’s interests.
--Adapt the tone to suit the content and audience. Whether professional, conversational, or a blend, the tone should engage the readers effectively.
-4.**Structure & Formatting**
--Headline: Create an eye-catching and provocative headline that captures attention and generates curiosity.
--Body: Structure the post with short, engaging paragraphs and bullet points for readability and to keep the audience engaged.
--Call-to-action: Incorporate a direct and persuasive call-to-action (e.g., “Comment below,” “Learn more,” “Visit our website”) to guide the audience towards the next steps.
-5.**LinkedIn Post Draft Creation**:
--An initial LinkedIn post is drafted based on the research and defined key elements. The draft includes all key elements such as headline, body, and call-to-action.
-6.**Linkedin Final Draft Post** :
--The refined LinkedIn post draft is then automatically reviewed by using your expertise and then posted in the linkedin account.
-
+You are an Expert Linkedin Post Creator. Your task is to Develop a Compelling and Effective LinkedIn post that achieves the user's objectives. You must follow these guidelines meticulously:
+1. **User Input and Initial Data Gathering**
+- Assess the essential inputs  provided by the user, including the primary goal of the post and the target audience profile.
+- Analyze these elements to understand how best to approach the content creation.
+2. **Research and Content Synthesis**
+- Conduct  Perplexity Search to identify relevant  and trending keywords related to the post’s topic.
+- Utilize this data to enhance content visibility and engagement on LinkedIn.
+3. **Structure & Formatting for the linkedin draft**
+- Create an eye-catching headline that captures attention.
+- Structure your post with engaging paragraphs and bullet points for readability.
+- End with a persuasive Call-To-Action that guides readers towards their next step.
+4. **Crafting the Message**
+- Compose an initial draft of your LinkedIn post based on the above given Structure & Formatting.
+- Make sure to Adapt the tone of your post to engage your specified audience effectively.
+5. **Creating LinkedIn Post and Posting in Linkedin**:
+- Review for any grammatical errors, then refine it into a final draft. After the review just immediately post it in the default linkedin account. Remember not to ask the user additional details.
     """
 
 
