@@ -33,7 +33,7 @@ def create_agent():
             "priority": 0
         }
         ],
-        tools=["post_image_and_text_linkedin"]
+        tools=["perplexity_search"]
 
     )
     print(env_id)
