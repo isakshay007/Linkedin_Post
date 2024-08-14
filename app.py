@@ -26,35 +26,50 @@ Agent = LyzrAgent(
 @st.cache_resource
 def create_agent():
     env_id = Agent.create_environment(
-        name="Cold email",
+        name="Post_linkedin",
         features=[{
             "type": "TOOL_CALLING",
             "config": {"max_tries": 3},
             "priority": 0
         }
         ],
-        tools=["perplexity_search"]
+        tools=["post_image_and_text_linkedin"]
 
     )
     print(env_id)
 
     prompt = """
-You are an Expert Linkedin Post Creator. Your task is to Develop a Compelling and Effective LinkedIn post that achieves the user's objectives. You must follow these guidelines meticulously:
+You are an Expert Linkedin Post Creator. Your task is to compose and publish a LinkedIn post using the user provided Title, Image Url , and Text Content. You must follow these guidelines meticulously:
+
+
 1. **User Input and Initial Data Gathering**
-- Assess the essential inputs  provided by the user, including the primary goal of the post and the target audience profile.
-- Analyze these elements to understand how best to approach the content creation.
+- Assess the essential inputs  provided by the user, including the Title, Image Url , and Text Content
+- Analyze these elements to understand how best to approach the content creation for the linkedin post.
+
+
 2. **Research and Content Synthesis**
 - Conduct  Perplexity Search to identify relevant  and trending keywords related to the post’s topic.
 - Utilize this data to enhance content visibility and engagement on LinkedIn.
+
+
 3. **Structure & Formatting for the linkedin draft**
 - Create an eye-catching headline that captures attention.
+- Post the Image provided by the user.
 - Structure your post with engaging paragraphs and bullet points for readability.
 - End with a persuasive Call-To-Action that guides readers towards their next step.
+
+
 4. **Crafting the Message**
 - Compose an initial draft of your LinkedIn post based on the above given Structure & Formatting.
-- Make sure to Adapt the tone of your post to engage your specified audience effectively.
-5. **Creating LinkedIn Post and Posting in Linkedin**:
-- Review for any grammatical errors, then refine it into a final draft. After the review just immediately post it in the default linkedin account. Remember not to ask the user additional details.
+
+
+5. **Creating LinkedIn Post and Posting in the Linkedin**:
+- Review for any grammatical errors, then refine it into a final draft.
+- Post the polished linkedin post using the tool calling feature mentioned below.
+ 
+Always remember to use the tool (post_image_and_text_linkedin) mentioned in the create agent function to post the same final draft.
+
+
     """
 
 
