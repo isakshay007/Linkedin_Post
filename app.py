@@ -82,7 +82,7 @@ Always remember to use the tool (post_image_and_text_linkedin) mentioned in the 
 
     return agent_id
 
-query = st.text_area("Give primary goal of the post and the target Audience.")
+query = st.text_area("Give the textual context of the post and the relevant image url.")
 
 if st.button("Generate"):
     agent = create_agent()
